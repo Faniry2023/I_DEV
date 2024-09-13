@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commande de {{ tuto.titre }}{% endblock %}
+
+{% block body %}
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <h4>Merci {{app.user.email}} de votre confience pour l'achat de cette formation</h4>
+            <ul>
+                <li><strong>Titre : </strong> {{ tuto.titre }} </li>
+                <li><strong>Sous titre : </strong> {{ tuto.sousTitre }} </li>
+            </ul>
+            <h3>voila le lien de votre formation video <strong><a href="">{{tuto.titre}}</a></strong></h3>
+            <p>Merci beaucoup</p>
+
+            <p></p>
+            <a href="{{ path('app_home') }}" class="btn btn-primary my-2">Voir encore plus de formation</a>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Authentification{% endblock %}
+{% block header %}
+    <div class="position-absolute top-0 start-50 translate-middle" style="margin-top: 80px;">
+        <h1>S'authentifier</h1>
+    </div>
+{% endblock %}
+{% block body %}
+<div  class="position-absolute top-50 start-50 translate-middle">
+    <form action="{{ path('app_client') }}" method="post">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" name="_username" class="form-control" id="exampleInputEmail1" value="{{last_username}}" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" name="_password" class="form-control" id="exampleInputPassword1">
+  </div>
+  <input type="hidden" name="_target_path" value="/">
+  <a href="{{path('app_inscrit')}}">Creer un compte</a>
+  <button type="submit" class="btn btn-primary">Se connecter</button>
+</form>
+</div>
+{% endblock %}
+
+{% block footer %}
+        <footer>
+        </footer>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Le tuto{% endblock %}
+
+{% block body %}
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="light">{{tuto.titre}}</h1>
+                <h4 class="fw-light">{{tuto.sousTitre}}</h4>
+                <img src="/uploads/{{tuto.image}}" style="margin-left: -50px;" width="700" height="350" alt="">
+                <p class="lead text-muted">{{tuto.description | raw }}</p>
+                <p>
+                <h2>Prix <strong>{{ tuto.prix }}</strong> <small>€</small> </h2>
+                {% if app.user and "ROLE_ADMIN" in app.user.roles %}
+                {% else %}
+                    {% if app.user is null %}
+                        <a href="{{path('app_client')}}" class="btn btn-primary my-2">S'authentifier d'abord</a>
+                        {% else %}
+                        <a href="{{path('app_achat_produit',{ 'id' : tuto.id}) }}" class="btn btn-primary my-2">Acheter le tuto</a>
+                    {% endif %}
+                {% endif %}
+                <a href="https://anthonyc.gumroad.com/l/formations-prompt-engineer" target="_blank" class="btn btn-secondary my-2">En savoir plus</a>
+                </p>
+            </div>
+        </div>
+    </section>
+{% endblock %}

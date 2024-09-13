@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commande de {{ tuto.titre }}{% endblock %}
+
+{% block body %}
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <form action="{{path('app_achat_produit',{ 'id' : tuto.id}) }}" method="post">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h1 class="light">Achat de {{tuto.titre}}</h1>
+                    <h3 style="color: red;" >{{ msg }}</h3>
+                    <h4 class="fw-light">{{tuto.sousTitre}}</h4>
+                    <img src="/uploads/{{tuto.image}}" style="margin-left: -50px;" width="400" height="250" alt="">
+                    <p class="lead text-muted">{{tuto.description | raw }}</p>
+                    <p>
+                    <h2>Prix <strong>{{ tuto.prix }}</strong> <small>€</small> </h2>
+                    </p>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email inscrit dans la banque</label>
+                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Numero de compte de la bank</label>
+                    <input type="text" name="bank" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Mot de passe du compte bancaire</label>
+                    <input type="password" name="mdp" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <h3>Si vous n'avez pas encore du compte  sur MyBank, deposer des argent dans votre compte d'abord</h3>
+                <p>Ouvrir un compte sur <strong><a href="https://localhost:7075/Home/LogIn">MyBank</a></strong></p>
+                <p></p>
+                <button type="submit" class="btn btn-primary">Acheter Maintenant</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}
